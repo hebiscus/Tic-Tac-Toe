@@ -18,3 +18,28 @@ body {
 .boardcontainer > div {
     text-align: center;
 }
+
+h1 {
+    margin: 0;
+}
+
+div > h2 {
+    margin: 0;
+    text-align: center;
+}
+
+.chooseplayerdiv {
+    width: 300px;
+}
+
+.chooseplayer {
+    display: flex;
+    height: 100px;
+    justify-content: center;
+    align-content: center;
+}
+
+.chooseplayer > button {
+    width: 50%;
+    height: 50%;
+}

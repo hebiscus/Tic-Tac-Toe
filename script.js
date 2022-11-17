@@ -2,24 +2,29 @@ const gameBoard = (() => {
     let boardArray = ['X','X','X','0','0','0','0','0','0'];
 
     render: function render() {
-        let boardcontainer = document.querySelector(".boardcontainer");
+        const boardcontainer = document.querySelector(".boardcontainer");
 
         boardArray.forEach(cell => {
             let div = boardcontainer.appendChild(document.createElement("div"));
             div.innerText = cell;
         })
+
+
         return "a"
     }
 
     return {
-        clicktile: render
+        render: render
     }
 })();
 
 const displayController = (() => {
+    const buttonplayer1 = document.querySelector(".PlayerX");
+    const buttonplayer2 = document.querySelector(".PlayerO");
+
 
     return {
-
+        
     }
 })();
 
@@ -38,4 +43,8 @@ const Players = (function(name, marker) {
     }
 })();
 
+const game = (function(){
 
+})();
+
+gameBoard.render();
