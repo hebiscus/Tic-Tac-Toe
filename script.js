@@ -1,14 +1,29 @@
 const gameBoard = (() => {
-    let boardArray = ['X','X','X','0','0','0','0','0','0'];
+    let boardArray = ['0','X','X','0','0','0','0','0','0'];
 
-    render: function render() {
+    return {
+        boardArray: boardArray
+    }
+})();
+
+const displayController = ((container) => {
+    const buttonplayer1 = document.querySelector(".PlayerX");
+    const buttonplayer2 = document.querySelector(".PlayerO");
+
+    render: function render(container) {
         const boardcontainer = document.querySelector(".boardcontainer");
 
-        boardArray.forEach(cell => {
+        container.forEach(cell => {
             let div = boardcontainer.appendChild(document.createElement("div"));
             div.innerText = cell;
         })
 
+        function playerdata(name, marker) {
+            Players.playerset(name, marker);
+        }
+        
+        buttonplayer1.addEventListener("click", playerdata("Player1", "X"));
+        buttonplayer2.addEventListener("click", playerdata("Player2", "O"));
 
         return "a"
     }
@@ -18,28 +33,29 @@ const gameBoard = (() => {
     }
 })();
 
-const displayController = (() => {
-    const buttonplayer1 = document.querySelector(".PlayerX");
-    const buttonplayer2 = document.querySelector(".PlayerO");
-
-
-    return {
-        
-    }
-})();
-
 const Players = (function(name, marker) {
-    let player = ["meme", "x"]
-    function whichName() {
-        alert(player);
-    }
-    function changeplayer() {
-        player = ["luigi", "x"]
+    
+    const currentplayer = {
+        currentName: name,
+        currentMarker: marker,
+
+        get playername() {
+            return this.currentName;
+        },   
+
+        set playername(newName) {
+            this.currentName = newName;
+        }
     }
 
+    function setplayerdata(name, marker) {
+        return name, marker;
+    }
+    
+
     return {
-        alertplayer: whichName,
-        fixplayer: changeplayer
+        // playerget: player.playername,
+        playerset: setplayerdata
     }
 })();
 
@@ -47,4 +63,5 @@ const game = (function(){
 
 })();
 
-gameBoard.render();
+let currentboard = gameBoard.boardArray
+displayController.render(currentboard);
