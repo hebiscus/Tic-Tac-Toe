@@ -43,3 +43,11 @@ div > h2 {
     width: 50%;
     height: 50%;
 }
+
+.boardcell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    font-size: 3.5rem;
+}
