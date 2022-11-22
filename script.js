@@ -1,5 +1,5 @@
 const gameBoard = (() => {
-    let boardArray = ['O','X','X','O','O','O','O','O','O'];
+    let boardArray = ['','','','','','','','',''];
 
     // currentMarker 
 
@@ -15,24 +15,25 @@ const displayController = ((container) => {
     render: function render(container) {
         const boardcontainer = document.querySelector(".boardcontainer");
 
-        container.forEach(cell => {
+        container.forEach(function (cell, value) {
             let div = boardcontainer.appendChild(document.createElement("div"));
             div.classList.add("boardcell");
-            div.innerText = cell;
-            let cellIndex = container.indexOf(cell);
-            div.addEventListener("click", function() {populateDisplay(cellIndex)} );
-        })
+            let cellIndex = `${value}`;
+            div.addEventListener("click", function() {populateArrayAndDisplay(cellIndex)});
+        });
 
         function playerdata(name, marker) {
             Players.playerset(name, marker);
         }
 
-        function populateDisplay(cellIndex) {
-           console.log(cellIndex);
+        function populateArrayAndDisplay(cellIndex) {
+            let properdiv = boardcontainer.children[cellIndex];
+           container[cellIndex] = "yo mama";
+           properdiv.innerText = `${container[cellIndex]}`;
         }
         
-        buttonplayer1.addEventListener("click", playerdata("Player1", "X"));
-        buttonplayer2.addEventListener("click", playerdata("Player2", "O"));
+        buttonplayer1.addEventListener("click", function() {playerdata("Player 1", "X")});
+        buttonplayer2.addEventListener("click", function() {playerdata("Player 2", "O")});
 
         return "a"
     }
@@ -43,32 +44,19 @@ const displayController = ((container) => {
 })();
 
 const Players = (function(name, marker) {
-    
-    const currentplayer = {
-        currentName: name,
-        currentMarker: marker,
-
-        get playername() {
-            return this.currentName;
-        },   
-
-        set playername(newName) {
-            this.currentName = newName;
-        }
-    }
 
     function setplayerdata(name, marker) {
         return name, marker;
     }
     
-
     return {
-        // playerget: player.playername,
-        playerset: setplayerdata
+        playerset: setplayerdata,
+        // playerget: currentplayer.wholePlayer(name)
     }
 })();
 
 const game = (function(){
+    
 
 })(Players, displayController, gameBoard);
 
