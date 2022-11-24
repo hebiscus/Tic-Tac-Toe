@@ -34,14 +34,14 @@ div > h2 {
 
 .chooseplayer {
     display: flex;
-    height: 100px;
+    height: 60px;
     justify-content: center;
     align-content: center;
 }
 
 .chooseplayer > button {
     width: 50%;
-    height: 50%;
+    height: 90%;
 }
 
 .boardcell {
