@@ -42,16 +42,21 @@ const displayController = ((container) => {
         function populateArrayAndDisplay(cellIndex) {
             let properdiv = boardcontainer.children[cellIndex];
             let grabplayerdata = Players.currentPlayerData;
+
+            if (container[cellIndex] != "") {
+                return;
+            } 
+            
             if (Players.currentPlayerData == undefined) {
                 buttonplayer1.disabled = true;
                 buttonplayer2.disabled = true;
                 container[cellIndex] = "X";
                 Players.currentPlayerData = ["Player1", "X"];
-
             } else {
                 container[cellIndex] = `${grabplayerdata[1]}`;
             }
             properdiv.innerText = `${container[cellIndex]}`;
+            properdiv.style.cursor = "not-allowed";
             switchPlayer();
         }
 

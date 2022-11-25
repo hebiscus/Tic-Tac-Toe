@@ -49,6 +49,11 @@ div > h2 {
     transform: scale(1.05);
 }
 
+.currentplayer {
+    font-size: 1.3em;
+    margin: 0.5rem;
+}
+
 .boardcell {
     display: flex;
     justify-content: center;
