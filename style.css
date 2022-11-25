@@ -35,13 +35,18 @@ div > h2 {
 .chooseplayer {
     display: flex;
     height: 60px;
-    justify-content: center;
+    justify-content: space-between;
     align-content: center;
 }
 
 .chooseplayer > button {
-    width: 50%;
+    width: 45%;
     height: 90%;
+}
+
+.chooseplayer > button:hover {
+    cursor: pointer;
+    transform: scale(1.05);
 }
 
 .boardcell {
@@ -50,4 +55,8 @@ div > h2 {
     align-items: center;
     border: 1px solid black;
     font-size: 3.5rem;
+}
+
+.boardcell:hover {
+    cursor: pointer;
 }

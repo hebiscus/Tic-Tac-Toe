@@ -11,13 +11,13 @@ const gameBoard = (() => {
 const displayController = ((container) => {
     const buttonplayer1 = document.querySelector(".PlayerX");
     const buttonplayer2 = document.querySelector(".PlayerO");
+    let firstplay = "yes";
 
     render: function render(container) {
         const boardcontainer = document.querySelector(".boardcontainer");
 
         container.forEach(function (cell, value) {
-
-
+            
             let div = boardcontainer.appendChild(document.createElement("div"));
             div.classList.add("boardcell");
             let cellIndex = `${value}`;
@@ -26,11 +26,10 @@ const displayController = ((container) => {
 
         function playerdata(name, marker, buttonnumber) {
             Players.setplayerdata(name, marker);
-            game.getmarker;
-            disableotherbutton(buttonnumber);
+            disableOtherButton(buttonnumber);
         }
 
-        function disableotherbutton(buttonnumber) {
+        function disableOtherButton(buttonnumber) {
             if (buttonnumber == buttonplayer1) {
                 let nextbutton = buttonnumber.nextElementSibling;
                 nextbutton.disabled = true;
@@ -42,9 +41,26 @@ const displayController = ((container) => {
 
         function populateArrayAndDisplay(cellIndex) {
             let properdiv = boardcontainer.children[cellIndex];
-            let grabplayerdata = Players.currentPlayerData
-           container[cellIndex] = `${grabplayerdata[1]}`;
-           properdiv.innerText = `${container[cellIndex]}`;
+            let grabplayerdata = Players.currentPlayerData;
+            if (Players.currentPlayerData == undefined) {
+                buttonplayer1.disabled = true;
+                buttonplayer2.disabled = true;
+                container[cellIndex] = "X";
+                Players.currentPlayerData = ["Player1", "X"];
+
+            } else {
+                container[cellIndex] = `${grabplayerdata[1]}`;
+            }
+            properdiv.innerText = `${container[cellIndex]}`;
+            switchPlayer();
+        }
+
+        function switchPlayer() {
+            if (Players.currentPlayerData[0] == "Player1") {
+                Players.currentPlayerData = ["Player2", "O"];
+            } else {
+                Players.currentPlayerData = ["Player1", "X"];
+            }
         }
         
         buttonplayer1.addEventListener("click", function() {playerdata("Player 1", "X", this)}, {once: true});
@@ -63,7 +79,7 @@ const Players = (function(name, marker) {
     let currentPlayerData = undefined;
 
     function setplayerdata(name, marker) {
-        currentplayersign.innerText += " " + `${name}`;
+        currentplayersign.innerText = `Current player: ${name}`;
         currentPlayerData = [name, marker];
     }
 
@@ -74,15 +90,13 @@ const Players = (function(name, marker) {
         },
         set currentPlayerData(newData) {
             currentPlayerData = newData;
+            currentplayersign.innerText = `Current player: ${newData[0]}`;
         }
     }
 })();
 
 const game = (function(){
     
-
-    // const chosenmarker = Players.setplayerdata;
-
     return {
         // getmarker: chosenmarker,
         // checkForWin: winsearch
