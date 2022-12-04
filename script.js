@@ -1,7 +1,7 @@
 const gameBoard = (() => {
-    let boardArray = ['','','','','','','','',''];
-
-    // currentMarker 
+    let boardArray = ['','','',
+                      '','','',
+                      '','',''];
 
     return {
         boardArray: boardArray
@@ -57,6 +57,7 @@ const displayController = ((container) => {
             }
             properdiv.innerText = `${container[cellIndex]}`;
             properdiv.style.cursor = "not-allowed";
+            game.checkForWin();
             switchPlayer();
         }
 
@@ -68,8 +69,8 @@ const displayController = ((container) => {
             }
         }
         
-        buttonplayer1.addEventListener("click", function() {playerdata("Player 1", "X", this)}, {once: true});
-        buttonplayer2.addEventListener("click", function() {playerdata("Player 2", "O", this)}, {once: true});
+        buttonplayer1.addEventListener("click", function() {playerdata("Player1", "X", this)}, {once: true});
+        buttonplayer2.addEventListener("click", function() {playerdata("Player2", "O", this)}, {once: true});
 
     }
 
@@ -84,7 +85,7 @@ const Players = (function(name, marker) {
     let currentPlayerData = undefined;
 
     function setplayerdata(name, marker) {
-        currentplayersign.innerText = `Current player: ${name}`;
+        currentplayersign.innerText = `Current turn: ${name}`;
         currentPlayerData = [name, marker];
     }
 
@@ -95,16 +96,53 @@ const Players = (function(name, marker) {
         },
         set currentPlayerData(newData) {
             currentPlayerData = newData;
-            currentplayersign.innerText = `Current player: ${newData[0]}`;
+            currentplayersign.innerText = `Current turn: ${newData[0]}`;
         }
     }
 })();
 
 const game = (function(){
+
+    function checkForWin() {
+        if (currentboard[0] == "X" && currentboard[1]  == "X" && currentboard[2] == "X") {
+            console.log("works");
+        } else if (currentboard[0] == "O" && currentboard[1]  == "O" && currentboard[2] == "O") {
+            console.log("alsoworks");
+        } else if (currentboard[3] == "X" && currentboard[4]  == "X" && currentboard[5] == "X") {
+            console.log("3alsoworks");
+        } else if (currentboard[3] == "O" && currentboard[4]  == "O" && currentboard[5] == "O") {
+            console.log("4alsoworks");
+        } else if (currentboard[6] == "X" && currentboard[7]  == "X" && currentboard[8] == "X") {
+            console.log("5alsoworks");
+        } else if (currentboard[6] == "O" && currentboard[7]  == "O" && currentboard[8] == "O") {
+            console.log("6alsoworks");
+        } else if (currentboard[0] == "X" && currentboard[3]  == "X" && currentboard[6] == "X") {
+            console.log("7alsoworks");
+        } else if (currentboard[0] == "O" && currentboard[3]  == "O" && currentboard[6] == "O") {
+            console.log("8alsoworks");
+        } else if (currentboard[1] == "X" && currentboard[4]  == "X" && currentboard[7] == "X") {
+            console.log("9alsoworks");
+        } else if (currentboard[1] == "O" && currentboard[4]  == "O" && currentboard[7] == "O") {
+            console.log("10alsoworks");
+        } else if (currentboard[2] == "X" && currentboard[5]  == "X" && currentboard[8] == "X") {
+            console.log("11alsoworks");
+        } else if (currentboard[2] == "O" && currentboard[5]  == "O" && currentboard[8] == "O") {
+            console.log("12alsoworks");
+        } else if (currentboard[0] == "X" && currentboard[4]  == "X" && currentboard[8] == "X") {
+            console.log("13alsoworks");
+        } else if (currentboard[0] == "O" && currentboard[4]  == "O" && currentboard[8] == "O") {
+            console.log("14alsoworks");
+        } else if (currentboard[2] == "X" && currentboard[4]  == "X" && currentboard[6] == "X") {
+            console.log("15alsoworks");
+        } else if (currentboard[2] == "O" && currentboard[4]  == "O" && currentboard[6] == "O") {
+            console.log("16alsoworks");
+        } 
+       
+    }
     
+
     return {
-        // getmarker: chosenmarker,
-        // checkForWin: winsearch
+        checkForWin: checkForWin
     }
 
 })(Players, displayController, gameBoard);
