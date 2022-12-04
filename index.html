@@ -6,20 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="middle"></div>
-        <h1>Tic-Tac-Toe</h1>
+        <h1>Tic Tac Toe</h1>
         <div class="chooseplayerdiv">
             <h2>Choose a player!</h2>
             <div class="chooseplayer">
                 <button class="PlayerX">Player X</button>
-                <button class="PlayerO">Player 0</button>
+                <button class="PlayerO">Player O</button>
             </div>
         </div>
-        <div class="currentplayer">Current player:</div>
-        <div class="boardcontainer">
+        <div class="currentplayer">Current turn:</div>
+        <div class="boardcontainer"></div>
 
+        <div class="modal">
+            <div class="modal-content">
+              <span class="close-btn">&times;</span>
+              <p>this is the text inside the modal</p>
+            </div>
         </div>
 
     <script src="script.js"></script> 
