@@ -1,3 +1,7 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -5,11 +9,12 @@ body {
     height: 100vh;
     width: 100vw;
     margin: 0;
+    background-color: black;
 }
 
 .boardcontainer {
-    height: 500px;
-    width: 500px;
+    height: 550px;
+    width: 550px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
@@ -21,15 +26,20 @@ body {
 
 h1 {
     margin: 0;
+    font-size: 6rem;
+    color: white;
+    text-shadow: 3px 2px 0px rgba(149, 149, 149, 1);
 }
 
 div > h2 {
     margin: 0;
     text-align: center;
+    font-size: 3rem;
+    color: white;
 }
 
 .chooseplayerdiv {
-    width: 300px;
+    width: 500px;
 }
 
 .chooseplayer {
@@ -37,12 +47,22 @@ div > h2 {
     height: 60px;
     justify-content: space-between;
     align-content: center;
+    
 }
 
 .chooseplayer > button {
+    background-color: #959595;
+    border: 0;
+    padding: 0;
+    font-size: 2.5rem;
     width: 45%;
     height: 90%;
+    color: white;
+    box-shadow: 7px 5px 1px 0px rgba(193, 255, 222, 1);
+    text-shadow: 1px 1px 0px black;
+    font-weight: bold;
 }
+
 
 .chooseplayer > button:hover {
     cursor: pointer;
@@ -50,18 +70,60 @@ div > h2 {
 }
 
 .currentplayer {
-    font-size: 1.3em;
+    font-size: 1.8em;
     margin: 0.5rem;
+    color: white;
 }
 
 .boardcell {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid black;
-    font-size: 3.5rem;
+    border: 2px solid black ;
+    font-size: 6.5rem;
+    background-color: #c1ffde;
 }
 
 .boardcell:hover {
     cursor: pointer;
 }
+
+.modal {
+    display: none;
+    position: fixed; 
+    padding-top: 50px;
+    left: 0; 
+    top: 0;
+    width: 100%;
+    height: 100%; 
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .modal-content {
+    position: relative; 
+    background-color: white;
+    padding: 20px; 
+    margin: auto; 
+    width: 75%;  
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+  }
+  .close-btn {
+    float: right; 
+    color: lightgray; 
+    font-size: 24px;  
+    font-weight: bold;
+  }
+  .close-btn:hover {
+    color: darkgray;
+  }
+  @-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+  }
+  @keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+  }

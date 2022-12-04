@@ -136,7 +136,9 @@ const game = (function(){
             console.log("15alsoworks");
         } else if (currentboard[2] == "O" && currentboard[4]  == "O" && currentboard[6] == "O") {
             console.log("16alsoworks");
-        } 
+        } else {
+            return;
+        }
        
     }
     
