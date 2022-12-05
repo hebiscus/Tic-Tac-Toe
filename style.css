@@ -91,12 +91,10 @@ div > h2 {
 .modal {
     display: none;
     position: fixed; 
-    padding-top: 50px;
     left: 0; 
-    top: 0;
+    top: 16%;
     width: 100%;
     height: 100%; 
-    background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.5);
   }
   .modal-content {
@@ -104,9 +102,8 @@ div > h2 {
     background-color: white;
     padding: 20px; 
     margin: auto; 
-    width: 75%;  
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s;
+    width: 45%;  
+    height: 30%;
     animation-name: animatetop;
     animation-duration: 0.4s
   }
@@ -126,4 +123,48 @@ div > h2 {
   @keyframes animatetop {
     from {top:-300px; opacity:0}
     to {top:0; opacity:1}
+  }
+
+  .modal-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .modal-buttons {
+    display: flex;
+    height: 70px;
+    width: 500px;
+    justify-content: space-between;
+  }
+
+  .modal-buttons > button {
+    background-color: #959595;
+    border: 0;
+    padding: 0;
+    color: white;
+    box-shadow: 7px 5px 1px 0px rgba(193, 255, 222, 1);
+    text-shadow: 1px 1px 0px black;
+    font-weight: bold;
+    width: 45%;
+    height: 90%;
+    font-size: 2rem;
+  }
+
+.modal-text > p {
+    margin: 0;
+    font-size: 2.2rem;
+    font-weight: bold;
+}
+
+.modal-text > p:first-child {
+    font-size: 3rem;
+    text-shadow: 2px 2px 0px rgb(149 149 149);
+}
+
+  .modal-buttons > button:hover {
+    cursor: pointer;
+    transform: scale(1.05);
   }

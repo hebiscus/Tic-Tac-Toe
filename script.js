@@ -11,7 +11,8 @@ const gameBoard = (() => {
 const displayController = ((container) => {
     const buttonplayer1 = document.querySelector(".PlayerX");
     const buttonplayer2 = document.querySelector(".PlayerO");
-    let firstplay = "yes";
+    const modal = document.querySelector(".modal");
+    let closeBtn = document.querySelector(".close-btn");
 
     render: function render(container) {
         const boardcontainer = document.querySelector(".boardcontainer");
@@ -74,8 +75,14 @@ const displayController = ((container) => {
 
     }
 
+    operateModal: function operateModal() {
+        modal.style.display = "block";
+
+    }
+
     return {
-        render: render
+        render: render,
+        operateModal: operateModal
     }
 })();
 
@@ -105,37 +112,40 @@ const game = (function(){
 
     function checkForWin() {
         if (currentboard[0] == "X" && currentboard[1]  == "X" && currentboard[2] == "X") {
-            console.log("works");
+            displayController.operateModal();
+
         } else if (currentboard[0] == "O" && currentboard[1]  == "O" && currentboard[2] == "O") {
-            console.log("alsoworks");
+            displayController.operateModal();
         } else if (currentboard[3] == "X" && currentboard[4]  == "X" && currentboard[5] == "X") {
-            console.log("3alsoworks");
+            displayController.operateModal();
         } else if (currentboard[3] == "O" && currentboard[4]  == "O" && currentboard[5] == "O") {
-            console.log("4alsoworks");
+            displayController.operateModal();
         } else if (currentboard[6] == "X" && currentboard[7]  == "X" && currentboard[8] == "X") {
-            console.log("5alsoworks");
+            displayController.operateModal();
         } else if (currentboard[6] == "O" && currentboard[7]  == "O" && currentboard[8] == "O") {
-            console.log("6alsoworks");
+            displayController.operateModal();
         } else if (currentboard[0] == "X" && currentboard[3]  == "X" && currentboard[6] == "X") {
-            console.log("7alsoworks");
+            displayController.operateModal();
         } else if (currentboard[0] == "O" && currentboard[3]  == "O" && currentboard[6] == "O") {
-            console.log("8alsoworks");
+            displayController.operateModal();
         } else if (currentboard[1] == "X" && currentboard[4]  == "X" && currentboard[7] == "X") {
-            console.log("9alsoworks");
+            displayController.operateModal();
         } else if (currentboard[1] == "O" && currentboard[4]  == "O" && currentboard[7] == "O") {
-            console.log("10alsoworks");
+            displayController.operateModal();
         } else if (currentboard[2] == "X" && currentboard[5]  == "X" && currentboard[8] == "X") {
-            console.log("11alsoworks");
+            displayController.operateModal();
         } else if (currentboard[2] == "O" && currentboard[5]  == "O" && currentboard[8] == "O") {
-            console.log("12alsoworks");
+            displayController.operateModal();
         } else if (currentboard[0] == "X" && currentboard[4]  == "X" && currentboard[8] == "X") {
-            console.log("13alsoworks");
+            displayController.operateModal();
         } else if (currentboard[0] == "O" && currentboard[4]  == "O" && currentboard[8] == "O") {
-            console.log("14alsoworks");
+            displayController.operateModal();
         } else if (currentboard[2] == "X" && currentboard[4]  == "X" && currentboard[6] == "X") {
-            console.log("15alsoworks");
+            displayController.operateModal();
         } else if (currentboard[2] == "O" && currentboard[4]  == "O" && currentboard[6] == "O") {
-            console.log("16alsoworks");
+            displayController.operateModal();
+        } else if (currentboard.includes("") == false) {
+            console.log("its a draw yo");
         } else {
             return;
         }
