@@ -12,16 +12,16 @@ const displayController = ((container) => {
     const buttonplayer1 = document.querySelector(".PlayerX");
     const buttonplayer2 = document.querySelector(".PlayerO");
     const modal = document.querySelector(".modal");
-    let closeBtn = document.querySelector(".close-btn");
+    const modaltextdiv = document.querySelector(".modal-text");
 
     render: function render(container) {
         const boardcontainer = document.querySelector(".boardcontainer");
 
         container.forEach(function (cell, value) {
-            
             let div = boardcontainer.appendChild(document.createElement("div"));
             div.classList.add("boardcell");
             let cellIndex = `${value}`;
+            div.innerText = `${container[cellIndex]}`;
             div.addEventListener("click", function() {populateArrayAndDisplay(cellIndex)});
         });
 
@@ -75,11 +75,26 @@ const displayController = ((container) => {
 
     }
 
-    operateModal: function operateModal() {
+    operateModal: function operateModal(winner) {
+        const resetbutton = document.querySelector(".resetbutton");
+        const dumbbutton = document.querySelector(".dumbbutton");
+        
+        modaltextdiv.firstElementChild.innerText = `${winner} has won!`;
         modal.style.display = "block";
 
+        resetbutton.addEventListener("click", function() {resetgame()})
+        dumbbutton.addEventListener("click", function() {alert("....Why would you click that?")})
     }
 
+    function resetgame() {
+        Players.currentPlayerData = undefined;
+        modal.style.display = "none";
+        currentboard.forEach((element, index) => {
+            currentboard[index] = "";
+        });
+        displayController.render(currentboard);
+    }
+    
     return {
         render: render,
         operateModal: operateModal
@@ -103,6 +118,10 @@ const Players = (function(name, marker) {
         },
         set currentPlayerData(newData) {
             currentPlayerData = newData;
+            if (currentPlayerData == undefined) {
+                currentplayersign.innerText = `Current turn:`;
+                return;
+            }
             currentplayersign.innerText = `Current turn: ${newData[0]}`;
         }
     }
@@ -112,40 +131,39 @@ const game = (function(){
 
     function checkForWin() {
         if (currentboard[0] == "X" && currentboard[1]  == "X" && currentboard[2] == "X") {
-            displayController.operateModal();
-
+            displayController.operateModal("Player X");
         } else if (currentboard[0] == "O" && currentboard[1]  == "O" && currentboard[2] == "O") {
-            displayController.operateModal();
+            displayController.operateModal("Player O");
         } else if (currentboard[3] == "X" && currentboard[4]  == "X" && currentboard[5] == "X") {
-            displayController.operateModal();
+            displayController.operateModal("Player X");
         } else if (currentboard[3] == "O" && currentboard[4]  == "O" && currentboard[5] == "O") {
-            displayController.operateModal();
+            displayController.operateModal("Player O");
         } else if (currentboard[6] == "X" && currentboard[7]  == "X" && currentboard[8] == "X") {
-            displayController.operateModal();
+            displayController.operateModal("Player X");
         } else if (currentboard[6] == "O" && currentboard[7]  == "O" && currentboard[8] == "O") {
-            displayController.operateModal();
+            displayController.operateModal("Player O");
         } else if (currentboard[0] == "X" && currentboard[3]  == "X" && currentboard[6] == "X") {
-            displayController.operateModal();
+            displayController.operateModal("Player X");
         } else if (currentboard[0] == "O" && currentboard[3]  == "O" && currentboard[6] == "O") {
-            displayController.operateModal();
+            displayController.operateModal("Player O");
         } else if (currentboard[1] == "X" && currentboard[4]  == "X" && currentboard[7] == "X") {
-            displayController.operateModal();
+            displayController.operateModal("Player X");
         } else if (currentboard[1] == "O" && currentboard[4]  == "O" && currentboard[7] == "O") {
-            displayController.operateModal();
+            displayController.operateModal("Player O");
         } else if (currentboard[2] == "X" && currentboard[5]  == "X" && currentboard[8] == "X") {
-            displayController.operateModal();
+            displayController.operateModal("Player X");
         } else if (currentboard[2] == "O" && currentboard[5]  == "O" && currentboard[8] == "O") {
-            displayController.operateModal();
+            displayController.operateModal("Player O");
         } else if (currentboard[0] == "X" && currentboard[4]  == "X" && currentboard[8] == "X") {
-            displayController.operateModal();
+            displayController.operateModal("Player X");
         } else if (currentboard[0] == "O" && currentboard[4]  == "O" && currentboard[8] == "O") {
-            displayController.operateModal();
+            displayController.operateModal("Player O");
         } else if (currentboard[2] == "X" && currentboard[4]  == "X" && currentboard[6] == "X") {
-            displayController.operateModal();
+            displayController.operateModal("Player X");
         } else if (currentboard[2] == "O" && currentboard[4]  == "O" && currentboard[6] == "O") {
-            displayController.operateModal();
+            displayController.operateModal("Player O");
         } else if (currentboard.includes("") == false) {
-            console.log("its a draw yo");
+            displayController.operateModal("nobody");
         } else {
             return;
         }
