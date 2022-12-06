@@ -18,7 +18,15 @@ const displayController = ((container) => {
         const boardcontainer = document.querySelector(".boardcontainer");
 
         container.forEach(function (cell, value) {
-            let div = boardcontainer.appendChild(document.createElement("div"));
+            let div = undefined;
+            if (boardcontainer.children.length == 9) {
+                div = boardcontainer.children[value];
+                div.style.cursor = "pointer";
+            } else if (!boardcontainer.children.length <= 9)  {
+                div = boardcontainer.appendChild(document.createElement("div"));
+            } else {
+                return;
+            }
             div.classList.add("boardcell");
             let cellIndex = `${value}`;
             div.innerText = `${container[cellIndex]}`;
